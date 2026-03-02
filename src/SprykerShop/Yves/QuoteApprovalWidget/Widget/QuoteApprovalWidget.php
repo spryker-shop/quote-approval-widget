@@ -29,9 +29,6 @@ class QuoteApprovalWidget extends AbstractWidget
      */
     protected const IS_QUOTE_APPLICABLE_FOR_APPROVAL_PROCESS = 'isQuoteApplicableForApprovalProcess';
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     */
     public function __construct(QuoteTransfer $quoteTransfer)
     {
         $this->addParameter('quoteTransfer', $quoteTransfer);
@@ -42,27 +39,16 @@ class QuoteApprovalWidget extends AbstractWidget
         $this->addIsQuoteApplicableForApprovalProcessParameter($quoteTransfer);
     }
 
-    /**
-     * @return string
-     */
     public static function getName(): string
     {
         return 'QuoteApprovalWidget';
     }
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string
     {
         return '@QuoteApprovalWidget/views/quote-approval-widget/quote-approval-widget.twig';
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     protected function addIsVisibleParameter(QuoteTransfer $quoteTransfer): void
     {
         $this->addParameter(
@@ -71,11 +57,6 @@ class QuoteApprovalWidget extends AbstractWidget
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer|null
-     */
     protected function getQuoteOwner(QuoteTransfer $quoteTransfer): ?CustomerTransfer
     {
         if (!$quoteTransfer->getCustomerReference()) {
@@ -94,11 +75,6 @@ class QuoteApprovalWidget extends AbstractWidget
         return $customerResponseTransfer->getCustomerTransfer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteApprovalTransfer|null
-     */
     protected function getWaitingQuoteApprovalByCurrentCompanyUser(QuoteTransfer $quoteTransfer): ?QuoteApprovalTransfer
     {
         if (!$this->findCurrentCompanyUser()) {
@@ -114,11 +90,6 @@ class QuoteApprovalWidget extends AbstractWidget
             );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function hasQuoteApprovalsForCurrentCompanyUser(QuoteTransfer $quoteTransfer): bool
     {
         if (!$this->findCurrentCompanyUser()) {
@@ -134,9 +105,6 @@ class QuoteApprovalWidget extends AbstractWidget
             );
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer|null
-     */
     protected function findCurrentCompanyUser(): ?CompanyUserTransfer
     {
         $customerTransfer = $this->getFactory()
@@ -150,22 +118,12 @@ class QuoteApprovalWidget extends AbstractWidget
         return $customerTransfer->getCompanyUserTransfer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function canQuoteBeApprovedByCurrentCustomer(QuoteTransfer $quoteTransfer): bool
     {
         return $this->getFactory()->getQuoteApprovalClient()
             ->canQuoteBeApprovedByCurrentCustomer($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return void
-     */
     protected function addIsQuoteApplicableForApprovalProcessParameter(QuoteTransfer $quoteTransfer): void
     {
         $this->addParameter(

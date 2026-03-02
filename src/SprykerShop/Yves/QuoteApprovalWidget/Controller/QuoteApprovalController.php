@@ -23,11 +23,6 @@ class QuoteApprovalController extends AbstractController
      */
     protected const PARAM_REFERER = 'referer';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function createQuoteApprovalAction(Request $request): RedirectResponse
     {
         $quoteApproveRequestForm = $this->getFactory()
@@ -50,12 +45,6 @@ class QuoteApprovalController extends AbstractController
         return $this->redirectToReferer($request);
     }
 
-    /**
-     * @param int $idQuoteApproval
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function removeQuoteApprovalAction(int $idQuoteApproval, Request $request): RedirectResponse
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
@@ -81,12 +70,6 @@ class QuoteApprovalController extends AbstractController
         return $this->redirectToReferer($request);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param int $idQuoteApproval
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function approveAction(Request $request, int $idQuoteApproval): RedirectResponse
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
@@ -110,12 +93,6 @@ class QuoteApprovalController extends AbstractController
         return $this->redirectToReferer($request);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param int $idQuoteApproval
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function declineAction(Request $request, int $idQuoteApproval): RedirectResponse
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
@@ -151,11 +128,6 @@ class QuoteApprovalController extends AbstractController
             ->translate($key, $this->getLocale(), $params);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteApprovalResponseTransfer $quoteApprovalResponseTransfer
-     *
-     * @return void
-     */
     protected function addMessagesFromQuoteApprovalResponse(QuoteApprovalResponseTransfer $quoteApprovalResponseTransfer): void
     {
         foreach ($quoteApprovalResponseTransfer->getMessages() as $messageTransfer) {
@@ -171,11 +143,6 @@ class QuoteApprovalController extends AbstractController
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteApprovalResponseTransfer $quoteApprovalResponseTransfer
-     *
-     * @return void
-     */
     protected function updateSessionQuoteOnSuccessfulResponse(
         QuoteApprovalResponseTransfer $quoteApprovalResponseTransfer
     ): void {
@@ -198,11 +165,6 @@ class QuoteApprovalController extends AbstractController
             ->setQuote($sessionQuoteTransfer);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function redirectToReferer(Request $request): RedirectResponse
     {
         $referer = $request->headers->get(static::PARAM_REFERER);

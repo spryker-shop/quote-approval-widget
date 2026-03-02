@@ -24,22 +24,11 @@ class QuoteApprovalWidgetToMoneyClientBridge implements QuoteApprovalWidgetToMon
         $this->moneyClient = $moneyClient;
     }
 
-    /**
-     * @param int $amount
-     * @param string|null $isoCode
-     *
-     * @return \Generated\Shared\Transfer\MoneyTransfer
-     */
     public function fromInteger(int $amount, ?string $isoCode): MoneyTransfer
     {
         return $this->moneyClient->fromInteger($amount, $isoCode);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MoneyTransfer $moneyTransfer
-     *
-     * @return string
-     */
     public function formatWithSymbol(MoneyTransfer $moneyTransfer): string
     {
         return $this->moneyClient->formatWithSymbol($moneyTransfer);

@@ -33,11 +33,6 @@ class QuoteApprovalWidgetToCustomerClientBridge implements QuoteApprovalWidgetTo
         return $this->customerClient->getCustomer();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerResponseTransfer
-     */
     public function findCustomerByReference(CustomerTransfer $customerTransfer): CustomerResponseTransfer
     {
         return $this->customerClient->findCustomerByReference($customerTransfer);

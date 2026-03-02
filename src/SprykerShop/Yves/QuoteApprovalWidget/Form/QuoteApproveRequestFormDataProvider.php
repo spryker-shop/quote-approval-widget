@@ -37,12 +37,6 @@ class QuoteApproveRequestFormDataProvider implements QuoteApproveRequestFormData
      */
     protected $moneyClient;
 
-    /**
-     * @param \SprykerShop\Yves\QuoteApprovalWidget\Dependency\Client\QuoteApprovalWidgetToQuoteApprovalClientInterface $quoteApprovalClient
-     * @param \SprykerShop\Yves\QuoteApprovalWidget\Dependency\Client\QuoteApprovalWidgetToCustomerClientInterface $customerClient
-     * @param \SprykerShop\Yves\QuoteApprovalWidget\Dependency\Client\QuoteApprovalWidgetToGlossaryStorageClientInterface $glossaryStorageClient
-     * @param \SprykerShop\Yves\QuoteApprovalWidget\Dependency\Client\QuoteApprovalWidgetToMoneyClientInterface $moneyClient
-     */
     public function __construct(
         QuoteApprovalWidgetToQuoteApprovalClientInterface $quoteApprovalClient,
         QuoteApprovalWidgetToCustomerClientInterface $customerClient,
@@ -69,11 +63,6 @@ class QuoteApproveRequestFormDataProvider implements QuoteApproveRequestFormData
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteApprovalRequestTransfer
-     */
     public function getData(QuoteTransfer $quoteTransfer): QuoteApprovalRequestTransfer
     {
         $quoteApprovalRequestTransfer = new QuoteApprovalRequestTransfer();
@@ -92,12 +81,6 @@ class QuoteApproveRequestFormDataProvider implements QuoteApproveRequestFormData
             ->setQuote($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param string $localeName
-     *
-     * @return array
-     */
     protected function getApproversList(QuoteTransfer $quoteTransfer, string $localeName): array
     {
         $quoteApproverCollection = $this->quoteApprovalClient
@@ -114,13 +97,6 @@ class QuoteApproveRequestFormDataProvider implements QuoteApproveRequestFormData
         return $quoteApproverList;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     * @param string $localeName
-     *
-     * @return string
-     */
     protected function getChoiceLabel(
         QuoteTransfer $quoteTransfer,
         CompanyUserTransfer $companyUserTransfer,

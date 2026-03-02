@@ -29,155 +29,76 @@ class QuoteApprovalWidgetToQuoteApprovalClientBridge implements QuoteApprovalWid
         $this->quoteApprovalClient = $quoteApprovalClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function isQuoteInApprovalProcess(QuoteTransfer $quoteTransfer): bool
     {
         return $this->quoteApprovalClient->isQuoteInApprovalProcess($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function canQuoteBeApprovedByCurrentCustomer(QuoteTransfer $quoteTransfer): bool
     {
         return $this->quoteApprovalClient->canQuoteBeApprovedByCurrentCustomer($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param int $idCompanyUser
-     *
-     * @return bool
-     */
     public function isCompanyUserInQuoteApproverList(QuoteTransfer $quoteTransfer, int $idCompanyUser): bool
     {
         return $this->quoteApprovalClient->isCompanyUserInQuoteApproverList($quoteTransfer, $idCompanyUser);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param int $idCompanyUser
-     *
-     * @return \Generated\Shared\Transfer\QuoteApprovalTransfer|null
-     */
     public function findWaitingQuoteApprovalByIdCompanyUser(QuoteTransfer $quoteTransfer, int $idCompanyUser): ?QuoteApprovalTransfer
     {
         return $this->quoteApprovalClient->findWaitingQuoteApprovalByIdCompanyUser($quoteTransfer, $idCompanyUser);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteApprovalRequestTransfer $quoteApprovalRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteApprovalResponseTransfer
-     */
     public function createQuoteApproval(QuoteApprovalRequestTransfer $quoteApprovalRequestTransfer): QuoteApprovalResponseTransfer
     {
         return $this->quoteApprovalClient->createQuoteApproval($quoteApprovalRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteApprovalRequestTransfer $quoteApprovalRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteApprovalResponseTransfer
-     */
     public function removeQuoteApproval(QuoteApprovalRequestTransfer $quoteApprovalRequestTransfer): QuoteApprovalResponseTransfer
     {
         return $this->quoteApprovalClient->removeQuoteApproval($quoteApprovalRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserCollectionTransfer
-     */
     public function getQuoteApproverList(QuoteTransfer $quoteTransfer): CompanyUserCollectionTransfer
     {
         return $this->quoteApprovalClient->getQuoteApproverList($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return int|null
-     */
     public function calculateApproveQuotePermissionLimit(QuoteTransfer $quoteTransfer, CompanyUserTransfer $companyUserTransfer): ?int
     {
         return $this->quoteApprovalClient->calculateApproveQuotePermissionLimit($quoteTransfer, $companyUserTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return int|null
-     */
     public function calculatePlaceOrderPermissionLimit(QuoteTransfer $quoteTransfer, CompanyUserTransfer $companyUserTransfer): ?int
     {
         return $this->quoteApprovalClient->calculatePlaceOrderPermissionLimit($quoteTransfer, $companyUserTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function isQuoteWaitingForApproval(QuoteTransfer $quoteTransfer): bool
     {
         return $this->quoteApprovalClient->isQuoteWaitingForApproval($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function isQuoteApproved(QuoteTransfer $quoteTransfer): bool
     {
         return $this->quoteApprovalClient->isQuoteApproved($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return string|null
-     */
     public function calculateQuoteStatus(QuoteTransfer $quoteTransfer): ?string
     {
         return $this->quoteApprovalClient->calculateQuoteStatus($quoteTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteApprovalRequestTransfer $quoteApprovalRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteApprovalResponseTransfer
-     */
     public function approveQuoteApproval(QuoteApprovalRequestTransfer $quoteApprovalRequestTransfer): QuoteApprovalResponseTransfer
     {
         return $this->quoteApprovalClient->approveQuoteApproval($quoteApprovalRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteApprovalRequestTransfer $quoteApprovalRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteApprovalResponseTransfer
-     */
     public function declineQuoteApproval(QuoteApprovalRequestTransfer $quoteApprovalRequestTransfer): QuoteApprovalResponseTransfer
     {
         return $this->quoteApprovalClient->declineQuoteApproval($quoteApprovalRequestTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     public function isQuoteApplicableForApprovalProcess(QuoteTransfer $quoteTransfer): bool
     {
         return $this->quoteApprovalClient->isQuoteApplicableForApprovalProcess($quoteTransfer);

@@ -20,10 +20,5 @@ interface QuoteApproveRequestFormDataProviderInterface
      */
     public function getOptions(QuoteTransfer $quoteTransfer, string $localeName): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\QuoteApprovalRequestTransfer
-     */
     public function getData(QuoteTransfer $quoteTransfer): QuoteApprovalRequestTransfer;
 }

@@ -23,12 +23,6 @@ use Symfony\Component\Form\FormInterface;
 
 class QuoteApprovalWidgetFactory extends AbstractFactory
 {
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param string $localeName
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function createQuoteApproveRequestForm(QuoteTransfer $quoteTransfer, string $localeName): FormInterface
     {
         $formDataProvider = $this->createQuoteApproveRequestFormDataProvider();
@@ -40,17 +34,11 @@ class QuoteApprovalWidgetFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormFactory
-     */
     public function getFormFactory(): FormFactory
     {
         return $this->getProvidedDependency(ApplicationConstants::FORM_FACTORY);
     }
 
-    /**
-     * @return \SprykerShop\Yves\QuoteApprovalWidget\Form\QuoteApproveRequestFormDataProviderInterface
-     */
     public function createQuoteApproveRequestFormDataProvider(): QuoteApproveRequestFormDataProviderInterface
     {
         return new QuoteApproveRequestFormDataProvider(
@@ -61,41 +49,26 @@ class QuoteApprovalWidgetFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \SprykerShop\Yves\QuoteApprovalWidget\Dependency\Client\QuoteApprovalWidgetToQuoteApprovalClientInterface
-     */
     public function getQuoteApprovalClient(): QuoteApprovalWidgetToQuoteApprovalClientInterface
     {
         return $this->getProvidedDependency(QuoteApprovalWidgetDependencyProvider::CLIENT_QUOTE_APPROVAL);
     }
 
-    /**
-     * @return \SprykerShop\Yves\QuoteApprovalWidget\Dependency\Client\QuoteApprovalWidgetToQuoteClientInterface
-     */
     public function getQuoteClient(): QuoteApprovalWidgetToQuoteClientInterface
     {
         return $this->getProvidedDependency(QuoteApprovalWidgetDependencyProvider::CLIENT_QUOTE);
     }
 
-    /**
-     * @return \SprykerShop\Yves\QuoteApprovalWidget\Dependency\Client\QuoteApprovalWidgetToCustomerClientInterface
-     */
     public function getCustomerClient(): QuoteApprovalWidgetToCustomerClientInterface
     {
         return $this->getProvidedDependency(QuoteApprovalWidgetDependencyProvider::CLIENT_CUSTOMER);
     }
 
-    /**
-     * @return \SprykerShop\Yves\QuoteApprovalWidget\Dependency\Client\QuoteApprovalWidgetToMoneyClientInterface
-     */
     public function getMoneyClient(): QuoteApprovalWidgetToMoneyClientInterface
     {
         return $this->getProvidedDependency(QuoteApprovalWidgetDependencyProvider::CLIENT_MONEY);
     }
 
-    /**
-     * @return \SprykerShop\Yves\QuoteApprovalWidget\Dependency\Client\QuoteApprovalWidgetToGlossaryStorageClientInterface
-     */
     public function getGlossaryStorageClient(): QuoteApprovalWidgetToGlossaryStorageClientInterface
     {
         return $this->getProvidedDependency(QuoteApprovalWidgetDependencyProvider::CLIENT_GLOSSARY_STORAGE);
